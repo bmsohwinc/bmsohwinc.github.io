@@ -1,7 +1,7 @@
 // --- Data (edit these) ---------------------------------------------------
 const BIO = `
-I am a PhD student in Computer Science at <a href="https://ucr.edu/" target="_blank">UC Riverside</a>. My research interests span high-performance networking, operating systems, and AI systems.<br>
-I enjoy building clean, reliable software and collaborating across systems and ML.<br>
+I am a PhD student in Computer Science at <a href="https://ucr.edu/" target="_blank">UC Riverside</a>.<br>
+My research interests span high-performance networking and operating systems.<br>
 I am fortunate to be advised by <a href="https://kknetsyslab.cs.ucr.edu/" target="_blank">Prof. K. K. Ramakrishnan</a>.
 `;
 
@@ -150,7 +150,7 @@ function renderBlogIndex() {
 
   center.innerHTML = '';
   center.appendChild(el('section', { class: 'card' }, [
-    el('h2', {}, ['Blog']),
+    el('h2', {}, ['Blog (WIP!)']),
     ...POSTS.map(post => el('div', { class: 'post' }, [
       el('div', { style: 'font-weight:600' }, [ post.title ]),
       el('div', { class: 'muted' }, [ new Date(post.date).toDateString() ]),
