@@ -40,20 +40,21 @@ a:hover { text-decoration: underline; }
   border-radius: 14px;
   padding: 18px;
   background: #fff;
+  text-align: center;
 }
 
 .avatar {
   width: 160px; height: 160px; border-radius: 50%; object-fit: cover; display:block;
   border: 1px solid var(--line);
-  margin: 6px 0 14px 0;
+  margin: 10px auto;
   background: #fafafa;
 }
 
 .name { font-size: 20px; font-weight: 700; }
 .role { color: var(--muted); margin-top: 4px; }
 
-.links { margin: 14px 0 6px 0; display: grid; gap: 8px; }
-.links a { display: inline-flex; align-items: center; gap: 8px; }
+.links { margin: 10px auto; display: grid; gap: 8px;}
+.links a { display: inline-flex; align-items: center; gap: 8px; margin: auto;}
 
 .cv {
   margin-top: 10px;

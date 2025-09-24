@@ -2,7 +2,7 @@
 const BIO = `
 I am a PhD student in Computer Science at <a href="https://ucr.edu/" target="_blank">UC Riverside</a>. My research interests span high-performance networking, operating systems, and AI systems.<br>
 I enjoy building clean, reliable software and collaborating across systems and ML.<br>
-I am fortunate to be advised by <a href="https://kknetsyslab.cs.ucr.edu/" target="_blank">Dr. K. K. Ramakrishnan</a>.
+I am fortunate to be advised by <a href="https://kknetsyslab.cs.ucr.edu/" target="_blank">Prof. K. K. Ramakrishnan</a>.
 `;
 
 const EDUCATION = [
@@ -98,6 +98,7 @@ function renderHome() {
       if (e.advisors && e.advisors.length) {
         const sub = el('ul', { class: 'list' }, e.advisors.map(a => {
           const s = el('li');
+          s.append('Advisor: ');
           s.append(link(a.url, a.name));
           return s;
         }));
