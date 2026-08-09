@@ -24,11 +24,11 @@ const EDUCATION = [
         degree: "B. Tech., Computer Science", 
         place: {
             name: "IIT Bhubaneswar",
-            url: "https://iitbbs.ac.in",
+            url: "https://www.iitbbs.ac.in/",
         }, 
         years: "2017–2021",
         advisors: [
-            { name: "Prof. Sudipta Saha", url: "https://secs.iitbbs.ac.in/index.php/sudipta/" },
+            { name: "Prof. Sudipta Saha", url: "https://sites.google.com/iitbbs.ac.in/sudiptasaha" },
         ]
     },
 ];
