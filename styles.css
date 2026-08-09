@@ -90,6 +90,8 @@ a:hover { text-decoration: underline; }
 .muted { color: var(--muted); }
 
 .list { margin: 0; padding-left: 18px; }
+.list > li + li { margin-top: 10px; }
+.date-range { font-size: 13px; }
 
 /* Right: publications */
 .pub {
@@ -99,6 +101,8 @@ a:hover { text-decoration: underline; }
 .pub:last-child { border-bottom: none; }
 .pub-title { font-weight: 600; }
 .pub-venue { color: var(--muted); font-size: 15px; font-weight: bold;}
+.pub-award { color: var(--accent-ink); font-size: 13px; font-weight: 600; }
+.pub-coverage { font-size: 13px; margin-top: 4px; }
 
 /* Blog styles */
 .post {
