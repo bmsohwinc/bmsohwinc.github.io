@@ -44,10 +44,9 @@ const PUBLICATIONS = [
     },
 ];
 
-// BLOG INDEX now links out to Medium (no in-page rendering)
+// Blog posts link to local pages.
 const POSTS = [
-  { title: "Hello, World (PhD)", date: "2025-09-01", url: "https://medium.com/@your-handle/hello-world" , excerpt: "Why I started this blog and what I plan to write about." },
-  { title: "Notes on Systems Reading", date: "2025-09-15", url: "https://medium.com/@your-handle/reading-notes", excerpt: "A lightweight method for reading and retaining systems papers." },
+  { title: "Mininet on Apple M4 using UTM with Ubuntu 24.04", date: "2026-08-09", url: "blog/mininet/guide.html", excerpt: "A guide to setting up Mininet on Apple M4 using UTM with Ubuntu 24.04." },
 ];
 
 // --- Render helpers ------------------------------------------------------
@@ -155,8 +154,7 @@ function renderBlogIndex() {
       el('div', { style: 'font-weight:600' }, [ post.title ]),
       el('div', { class: 'muted' }, [ new Date(post.date).toDateString() ]),
       el('p', {}, [ post.excerpt ]),
-      // Direct to Medium (new tab)
-      el('a', { href: post.url, target: '_blank', rel: 'noopener' }, ['Read on Medium →'])
+      el('a', { href: post.url }, ['Read post →'])
     ]))
   ]));
 
@@ -175,4 +173,3 @@ function route() {
 
 window.addEventListener('hashchange', route);
 document.addEventListener('DOMContentLoaded', route);
-
