@@ -35,7 +35,7 @@ const EDUCATION = [
 
 const EXPERIENCE = [
     { role: "Software Engineer", org: {name: "Narrative (Y Combinator '23)", url: "https://www.trynarrative.com/"}, years: "2024–2025", blurb: "Built Django/Python data pipelines and quality checks for 22 freight carriers and $20M in monthly invoices; shipped invoice workflows saving a client about $75K per month; integrated Textract and LLM-based invoice parsing." },
-    { role: "Software Engineer", org: {name: "D. E. Shaw & Co.", url: "https://www.deshawindia.com/"}, years: "2021–2023", blurb: "Built Java/SQL ETL pipelines, GraphQL APIs, and React analytics for human-capital data; replaced five years of manual attrition reporting and improved pivot-table computation by 30%." },
+    { role: "Software Engineer", org: {name: "D. E. Shaw & Co.", url: "https://www.deshawindia.com/"}, years: "2021–2023", blurb: "Built Java/SQL ETL pipelines, GraphQL APIs, and React analytics for human-capital data; replaced five years of manual attrition reporting with automated reports and improved pivot-table computation by 30%." },
 ];
 
 const PUBLICATIONS = [
