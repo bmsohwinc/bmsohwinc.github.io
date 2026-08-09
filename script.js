@@ -109,7 +109,7 @@ function renderHome() {
 
   // Experience
   center.appendChild(el('section', { class: 'card' }, [
-    el('h2', {}, ['Experience']),
+    el('h2', {}, ['Work Experience']),
     el('ul', { class: 'list' }, EXPERIENCE.map(x => {
       const li = el('li');
       const line = el('div');
@@ -129,15 +129,22 @@ function renderHome() {
   right.appendChild(el('div', { class: 'card' }, [
     el('h2', {}, ['Latest Publications']),
     ...PUBLICATIONS.map(p => el('article', { class: 'pub' }, [
-      el('div', { class: 'pub-title' }, [ p.title ]),
+      p.links?.pdf
+        ? el('a', { href: p.links.pdf, class: 'pub-title', target: '_blank', rel: 'noopener' }, [p.title])
+        : el('div', { class: 'pub-title' }, [p.title]),
       el('div', { class: 'pub-authors muted' }, [ p.authors ]),
-      el('div', { class: 'pub-venue' }, [ p.venue ]),
-      el('div', {}, [
-        p.links?.pdf ? el('a', { href: p.links.pdf, target: '_blank', rel: 'noopener' }, ['PDF']) : null,
-        (p.links?.pdf && p.links?.code) ? document.createTextNode(' · ') : null,
-        p.links?.code ? el('a', { href: p.links.code, target: '_blank', rel: 'noopener' }, ['Code']) : null
-      ])
+      el('div', { class: 'pub-venue' }, [ p.venue ])
     ]))
+  ]));
+
+  right.appendChild(el('div', { class: 'card' }, [
+    el('h2', {}, ['Latest Blogs']),
+    ...[...POSTS]
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .map(post => el('article', { class: 'pub' }, [
+        el('a', { href: post.url, class: 'pub-title' }, [post.title]),
+        el('div', { class: 'muted post-date' }, [new Date(post.date).toDateString()])
+      ]))
   ]));
 
   right.style.display = '';
@@ -149,10 +156,10 @@ function renderBlogIndex() {
 
   center.innerHTML = '';
   center.appendChild(el('section', { class: 'card' }, [
-    el('h2', {}, ['Blog (WIP!)']),
+    el('h2', {}, ['Blog']),
     ...POSTS.map(post => el('div', { class: 'post' }, [
       el('div', { style: 'font-weight:600' }, [ post.title ]),
-      el('div', { class: 'muted' }, [ new Date(post.date).toDateString() ]),
+      el('div', { class: 'muted post-date' }, [ new Date(post.date).toDateString() ]),
       el('p', {}, [ post.excerpt ]),
       el('a', { href: post.url }, ['Read post →'])
     ]))
