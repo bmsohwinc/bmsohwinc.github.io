@@ -47,6 +47,50 @@
         a:hover {
             text-decoration: underline;
         }
+
+        .submission-checks, .sample-submission {
+            margin-top: 36px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            line-height: 1.5;
+        }
+
+        .submission-checks h2, .sample-submission h2 {
+            margin-top: 0;
+        }
+
+        pre {
+            padding: 16px;
+            overflow-x: auto;
+            background-color: #f3f3f3;
+            border-radius: 4px;
+            line-height: 1.5;
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+        }
+
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+
+        .checklist li + li {
+            margin-top: 12px;
+        }
+
+        .checklist label {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .checklist input {
+            flex-shrink: 0;
+        }
     </style>
 </head>
 
@@ -103,6 +147,128 @@
             <td>—</td>
         </tr>
     </table>
+
+    <section class="submission-checks" aria-labelledby="submission-heading">
+        <h2 id="submission-heading">Before You Submit to TA</h2>
+        <p>Review your written answers and check each item before handing them in. These checkboxes are for your own review and are not saved.</p>
+
+        <ul class="checklist">
+            <li>
+                <label>
+                    <input type="checkbox">
+                    <span><strong>Name and NetID:</strong> Write both clearly on your submission.</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox">
+                    <span><strong>Organize your answer:</strong> Include your code plan first, then test cases with inputs and expected outputs, then your code.</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox">
+                    <span><strong>Include the full program:</strong> Write the required <code>#include</code> directives, <code>using namespace std;</code> (or use <code>std::</code>), <code>int main()</code>, opening and closing braces, and <code>return 0;</code>. Check that all required semicolons are present.</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox">
+                    <span><strong>Read inputs before using them:</strong> Declare each variable and give it a value before using it in a calculation or condition. For user inputs, place <code>cin</code> before the first use of that value.</span>
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox">
+                    <span><strong>Dry run a test case:</strong> Trace your code line by line with a test input, track variable values and branches, and confirm that the output matches your expected output.</span>
+                </label>
+            </li>
+        </ul>
+
+        <p><a href="#sample-submission">View the sample submission below.</a></p>
+    </section>
+
+    <section class="sample-submission" aria-labelledby="sample-submission">
+        <h2 id="sample-submission">Sample Submission</h2>
+        <p><strong>Lab 3: Color Adjustment in Monitors</strong></p>
+        <p><strong>Name:</strong> [Your name]<br><strong>NetID:</strong> [Your NetID]</p>
+
+        <h3>Code Plan</h3>
+        <ol>
+            <li>Declare integer variables <code>red</code>, <code>green</code>, and <code>blue</code>.</li>
+            <li>Read the three input values into these variables.</li>
+            <li>Declare integer variables <code>min1</code> and <code>min2</code>.</li>
+            <li>Compare red and green. Store the smaller value in <code>min1</code>.</li>
+            <li>Compare <code>min1</code> and blue. Store the smaller value in <code>min2</code>, the gray component.</li>
+            <li>Declare integer variables <code>newRed</code>, <code>newGreen</code>, and <code>newBlue</code>.</li>
+            <li>Subtract <code>min2</code> from red, green, and blue, and store the results in <code>newRed</code>, <code>newGreen</code>, and <code>newBlue</code>.</li>
+            <li>Print the adjusted red, green, and blue values, separated by spaces, followed by a newline.</li>
+        </ol>
+
+        <h3>Test Cases</h3>
+        <p>Prepare these before writing the C++ code.</p>
+        <div class="table-scroll" role="region" aria-label="Sample test cases" tabindex="0">
+            <table>
+                <thead>
+                    <tr><th scope="col">Case</th><th scope="col">Input</th><th scope="col">Expected output</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Red is minimum</td><td><code>80 120 255</code></td><td><code>0 40 175</code></td></tr>
+                    <tr><td>Green is minimum</td><td><code>130 50 130</code></td><td><code>80 0 80</code></td></tr>
+                    <tr><td>Blue is minimum</td><td><code>45 23 10</code></td><td><code>35 13 0</code></td></tr>
+                    <tr><td>All three equal</td><td><code>42 42 42</code></td><td><code>0 0 0</code></td></tr>
+                    <tr><td>One value is zero</td><td><code>97 0 88</code></td><td><code>97 0 88</code></td></tr>
+                    <tr><td>Two values tie for minimum</td><td><code>50 50 130</code></td><td><code>0 0 80</code></td></tr>
+                    <tr><td>Lower boundary</td><td><code>0 0 0</code></td><td><code>0 0 0</code></td></tr>
+                    <tr><td>Upper boundary</td><td><code>255 255 255</code></td><td><code>0 0 0</code></td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p><strong>Input assumptions:</strong> Negative numbers, values above 255, and decimal values are outside the specified inputs. Input validation is not required for this problem and is not included in this program.</p>
+
+        <h3>Code</h3>
+        <pre><code>#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int red, green, blue;
+    cin &gt;&gt; red &gt;&gt; green &gt;&gt; blue;
+
+    int min1, min2;
+
+    if (red &lt;= green) {
+        min1 = red;
+    } else {
+        min1 = green;
+    }
+
+    if (min1 &lt;= blue) {
+        min2 = min1;
+    } else {
+        min2 = blue;
+    }
+
+    int newRed, newGreen, newBlue;
+
+    newRed = red - min2;
+    newGreen = green - min2;
+    newBlue = blue - min2;
+
+    cout &lt;&lt; newRed &lt;&lt; " " &lt;&lt; newGreen &lt;&lt; " " &lt;&lt; newBlue &lt;&lt; "\n";
+
+    return 0;
+}</code></pre>
+
+        <h3>Dry Run (optional, for your reference only)</h3>
+        <p>Input: <code>130 50 130</code>. Expected output: <code>80 0 80</code>.</p>
+        <ol>
+            <li>Read <code>red = 130</code>, <code>green = 50</code>, and <code>blue = 130</code>.</li>
+            <li><code>red &lt;= green</code> is false, so the <code>else</code> branch sets <code>min1 = 50</code>.</li>
+            <li><code>min1 &lt;= blue</code> is true, so <code>min2 = 50</code>.</li>
+            <li>Subtract 50: <code>newRed = 80</code>, <code>newGreen = 0</code>, and <code>newBlue = 80</code>.</li>
+            <li>Print <code>80 0 80</code>, followed by a newline. This matches the expected output.</li>
+        </ol>
+    </section>
 
 </body>
 </html>
